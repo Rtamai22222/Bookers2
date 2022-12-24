@@ -76,5 +76,6 @@ Rails.application.configure do
   
   config.hosts.clear
   
-  config.active_job.queue_adapter = :inli
+  # config.active_job.queue_adapter = :inline #自分で書いた文
+  config.active_job.queue_adapter = :inline　#コピーした文
 end
