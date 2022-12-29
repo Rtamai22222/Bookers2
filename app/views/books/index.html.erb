@@ -23,7 +23,28 @@
         <%= f.submit "Create book" %>
       <% end %>
     </div>
+
     <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th colspan="1"></th>
+            <th>title</th>
+            <th>opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @books.each do |booklist| %>
+          <tr>
+            <td>image</td>
+            <td><%= link_to booklist.title, book_path(booklist.id) %></td>
+            <td><%= booklist.body %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
 
     </div>
   </div>
