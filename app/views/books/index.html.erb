@@ -4,11 +4,7 @@
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
-      <% if @user.profile_image.present? %>
-        <%= image_tag @user.profile_image(100, 100) %>
-      <% else %>
-        <%= image_tag 'no_image.jpg' %>
-      <% end %>
+      <%= image_tag @user.get_profile_image(100, 100) %>
       <p>name:<%= @user.name %></p>
       <p>introduction:<%= @user.introduction %></p>
 
@@ -38,7 +34,7 @@
         <tbody>
         <% @books.each do |booklist| %>
           <tr>
-            <td>image</td>
+            <td><%= image_tag @users.find(booklist.user_id).get_profile_image(100, 100) %></td>
             <td><%= link_to booklist.title, book_path(booklist.id) %></td>
             <td><%= booklist.body %></td>
           </tr>
