@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    @books = Book.all
+    @users = User.all
   end
 
   def show
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:profile_image, :introduction)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
 end

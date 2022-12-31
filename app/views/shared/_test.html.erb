@@ -1,0 +1,30 @@
+<h2><%= title %></h2>
+<table>
+  <% case page %>
+  <% when 'bookshow' %>
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+      <th>title</th>
+      <th>opinion</th>
+    </tr>
+  </thead>
+  <% when 'userindex' %>
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+      <th>name</th>
+      <th>opinion</th>
+    </tr>
+  </thead>
+  <% end %>
+  <tbody>
+  <% books.each do |booklist| %>
+    <tr>
+      <td><%= image_tag users.find(booklist.user_id).get_profile_image(100, 100) %></td>
+      <td><%= link_to booklist.title, book_path(booklist.id) %></td>
+      <td><%= booklist.body %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

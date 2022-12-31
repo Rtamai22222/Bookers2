@@ -1,0 +1,67 @@
+<!--"user","book_new","books"に値を渡す-->
+<p></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= image_tag user.get_profile_image(100, 100) %>
+      <p>name:<%= user.name %></p>
+      <p>introduction:<%= user.introduction %></p>
+
+      <div><%= link_to "edit", edit_user_path(current_user.id) %></div>
+
+      <h2>New book</h2>
+      <%= form_with model: book_new, url: books_path do |f| %>
+        <h4>title</h4>
+        <%= f.text_field :title %>
+        <h4>opinion</h4>
+        <%= f.text_area :body %>
+        <%= f.submit "Create book" %>
+      <% end %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+
+      <table>
+       <% case page %>
+        <% when 'books/index' %>
+        <thead>
+          <tr>
+            <th colspan="1"></th>
+            <th>title</th>
+            <th>opinion</th>
+          </tr>
+        </thead>
+        <% when 'books/show' %>
+        <thead>
+          <tr>
+            <th colspan="1"></th>
+            <th>title</th>
+            <th>opinion</th>
+          </tr>
+        </thead>
+        <% when 'users/index' %>
+        <thead>
+          <tr>
+            <th colspan="1"></th>
+            <th>name</th>
+            <th>opinion</th>
+          </tr>
+        </thead>
+        <% end %>
+        
+        <tbody>
+        <% lists.each do |tablelist| %>
+          <tr>
+            <td><%= image_tag users.find(tablelist.user_id).get_profile_image(100, 100) %></td>
+            <td><%= link_to tablelist.title, book_path(tablelist.id) %></td>
+            <td><%= tablelist.body %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
