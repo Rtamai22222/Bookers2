@@ -17,11 +17,14 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     @user = User.find(book.user_id)
     @books = Book.where(id: params[:id])
-    @book_new = Book.new
+    # @book_new = Book.new
     @users = User.all
   end
 
   def edit
+  end
+
+  def destroy
   end
 
   private

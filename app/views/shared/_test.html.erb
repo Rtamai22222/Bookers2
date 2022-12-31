@@ -9,6 +9,18 @@
       <th>opinion</th>
     </tr>
   </thead>
+  <tbody>
+          <% lists.each do |tablelist| %>
+            <tr>
+              <td><%= image_tag users.find(tablelist.user_id).get_profile_image(100, 100) %></td>
+              <td><%= link_to tablelist.title, book_path(tablelist.id) %></td>
+              <td><%= tablelist.body %></td>
+              <td><%= link_to 'edit' edit_book_path(tablelist.id) %></td>
+              <td><%= link_to 'delete' book_path(tablelist.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+  </tbody>
+
   <% when 'userindex' %>
   <thead>
     <tr>
@@ -17,7 +29,6 @@
       <th>opinion</th>
     </tr>
   </thead>
-  <% end %>
   <tbody>
   <% books.each do |booklist| %>
     <tr>
@@ -27,4 +38,7 @@
     </tr>
   <% end %>
   </tbody>
+  
+  <% end %>
 </table>
+
