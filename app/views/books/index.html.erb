@@ -1,2 +1,10 @@
 <!--books/index-->
+<% if @book_new.errors.any? %>
+  <%= @book_new.errors.count %>県のエラー
+  <ul>
+     <% @book_new.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= render 'shared/view', page: 'books/index', user: @user, book_new: @book_new, books: @books, users: @users %>
