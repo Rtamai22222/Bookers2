@@ -13,7 +13,9 @@
   <% end %>
 
   <div class="row">
-    <%= render 'shared/sidebar', user: @user, book_new: @book_new %>
+    <div class="col-md-3">
+      <%= render 'shared/sidebar', user: @user, book_new: @book_new %>
+    </div>
 
     <div class="col-md-8 offset-md-1">
       <table class="table">
@@ -29,7 +31,7 @@
         <tbody>
           <% @books.each do |booklist| %>
             <tr>
-              <td><%= image_tag @users.find(booklist.user_id).get_profile_image(80, 80) %></td>
+              <td><%= link_to image_tag(@users.find(booklist.user_id).get_profile_image(80, 80)), user_path(booklist.user_id) %></td>
               <td><%= link_to booklist.title, book_path(booklist.id) %></td>
               <td><%= booklist.body %></td>
             </tr>
